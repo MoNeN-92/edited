@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  display = 'none';
+  hideShow = 'none';
   togle(){
-    this.display = this.display == 'none' ? 'block' : 'none'}
+    this.hideShow = this.hideShow == 'none' ? 'block' : 'none'}
 }

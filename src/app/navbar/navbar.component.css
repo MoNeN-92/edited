@@ -16,5 +16,5 @@
 
 .modal-backdrop {
   background-color: gray;
-  opacity: 0.7;
+ opacity: calc(90%);
 }

@@ -1,0 +1,43 @@
+
+
+<div class="container col-lg-7 mt-5 ">
+  <div class="row ">
+    <div class="card phone m-3" *ngFor="let pro of prod; index as i" style="width: 18rem;">
+      <div *ngIf="pro.gift">
+        <p class="gift bg-success  mt-2">Gift</p>
+      </div>
+    <div *ngIf="pro.sale " >
+ <p class="sale bg-danger mt-2"> Sale </p>
+    </div>
+     
+  <img [src]="pro.avatar[pro.poster]" class="card-img-top" alt="..." height="400">
+  <div class="card-body">
+  
+    <h2 class="card-title">{{pro.title}}</h2>
+    <p class="card-weight" *ngFor="let weight of pro.kg">{{weight}}</p>
+    
+   <div class="sale" *ngIf="pro.sale == null">
+<p class="card-sale bg-success rounded hov"  style="width: 90px; " >{{'📢 '+ ' sale  ' + (pro.disc) + '%'}}</p>
+   </div>
+    <div class="gift" *ngIf="pro.gift">
+        <p class="card-gift hov  d-inline-block"  >{{'🎁'}}</p>
+    </div>
+  <div *ngIf="pro.sale == null;else discpricee">
+    <del>
+      <p class="card-price bold  bg-danger " >{{'ძველი ფასი ფასი  ' +  pro.price + '₾'}} </p>
+    </del>
+    <p class="card-price bold bg-success" >{{'ფასი  ' +  (pro.price - DisPrice(pro.price, pro.disc)) + '₾'}} </p>
+
+  </div>
+
+  <ng-template #discpricee>
+      <p class="card-price bold " >{{'ფასი  ' +  (pro.price - DisPrice(pro.price, pro.disc)) + '₾'}} </p>
+  </ng-template>
+  
+    <div class=" images zoom d-inline-block mb-5" [ngClass]="s == pro.poster ? 'active' : ''" *ngFor="let images of pro.avatar;index as s">
+      <img class="m-2 "  [src]="images" alt="" height="60" width="60" (click)="changePoster(i,s)">
+    </div>
+    <br>
+    <a href="#" value="" type="button"  class="btn btn-primary position-absolute bot mt-5">ყიდვა</a>
+  </div>
+</div>

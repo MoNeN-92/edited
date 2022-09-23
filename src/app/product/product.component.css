@@ -1,0 +1,37 @@
+.active {
+    border: 3px solid rgb(13, 36, 207);
+    border-radius: 10%;
+    padding: 0px;
+}
+.bold {
+    font-weight:bold ;
+}
+
+
+.hov:hover{
+    animation: hov .15s;
+    cursor: pointer;
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5); 
+    transform: scale(1.5); 
+    
+}
+
+@keyframes hov {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  
+  .zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .bot{
+    bottom: 0;
+    right: 0;
+ 
+  }
+
