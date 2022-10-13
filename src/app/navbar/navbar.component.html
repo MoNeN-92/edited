@@ -1,53 +1,114 @@
-<nav class="navbar navbar-expand-lg bg-warning ">
-    <div class="container-fluid ">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-        
-          <section class="nav-item">
-            <button (click)="togle()" class="btn btn-success rounded">Register</button>
-           </section>
-    
+<nav class="navbar navbar-expand-lg mt-0 bg-warning ">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="index.html">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ">
      
-        </ul>
+        <li> <a class="nav-link" routerLink="/aboutUs" routerLinkActive="router-link-active">ჩვენ შესახებ</a> </li>
+        <li> <a class="nav-link" routerLink="/services" routerLinkActive="router-link-active">სერვისები</a> </li>
+        <li> <a class="nav-link" routerLink="/Contact" routerLinkActive="router-link-active">კონტაქტი</a> </li>
+        <li> <a class="nav-link" routerLink="/Store" routerLinkActive="router-link-active">პროდუქტი</a> </li>
+        <!-- <li> <a class="nav-link" routerLink="/Products" routerLinkActive="router-link-active">პროდუქტი</a> </li> -->
+      
+      </ul> 
+       <section class="nav-item  ">
+          <button (click)="togle()" class="btn  btn-success rounded">Register</button>
+          <button (click)="toglee()" class="btn mar btn-success rounded">card</button>
+        </section>
+    </div>
+  </div>
+</nav>
+<section class="moda modal-backdrop" [ngStyle]="{'display':hideShow}">
+  <div id="login  ">
+    <h3 class="text-center text-white pt-5">Login form</h3>
+    <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+            <form id="login-form" name="forma" class="form" action="" method="post">
+              <h3 class="text-center text-info">Login</h3>
+              <button type="button" id="close" (click)="togle()"
+                class="btn d-block mx-auto bg-warning text-danger">✖️</button>
+              <!-- username -->
+              <div class="form-group">
+                <label for="username" class="text-info">Username:</label><br>
+                <input type="username" placeholder="Username" name="username" id="username" [formControl]="username"
+                  class="form-control">
+                <small class="text-danger"
+                  *ngIf="username.touched && username.status == 'INVALID' && username.errors">სავალდებულო ველი</small>
+                <div *ngIf="username.touched && username.status == 'INVALID' && username.errors">
+                  <div *ngIf="username.errors && username.errors['minlengh'].requiredLenght">
+                    სიმბოლოების რაოდენობა უნდა იყოს მინიმუმ {{username.errors['minlengh'].requiredLenght}}
+                  </div>
+                </div>
+              </div>
+              <!-- username end -->
+              <!-- email -->
+              <div class="form-group">
+                <label for="Email" class="text-info">Email:</label><br>
+                <input type="email" placeholder="Email" name="email" id="Email" [formControl]="email"
+                  class="form-control">
+                <small class="text-danger"
+                  *ngIf="email.touched && email.status == 'INVALID' && email.errors">სავალდებულო ველი</small>
+              </div>
+              <div *ngIf="email.touched && email.status == 'INVALID' && email.errors">
+                <div *ngIf="email.errors && email.errors['email']">
+                  <small class="text-danger">ეს ველი უნდა შეიცავდეს @ სიმბოლოს</small>
+                </div>
+              </div>
+              <!-- email end -->
+              <!-- password -->
+              <div class="form-group">
+                <label for="password" class="text-info">Password:</label><br>
+                <input type="password" placeholder="Password" name="password" id="password" [formControl]="password"
+                  class="form-control">
+                <small class="text-danger" *ngIf="password.touched && password.status == 'INVALID'">სავალდებულო
+                  ველი</small>
+              </div>
+              <div *ngIf="password.touched && password.status == 'INVALID' ">
+                <div *ngIf="password.errors && password.errors['minlength']">
+
+                  <small class="text-danger">ეს ველი უნდა შეიცავდეს მინიმუმ 8 სიმბოლოს</small>
+                </div>
+              </div>
+              <!-- password end -->
+              <!-- text area -->
+              <div class="form-group">
+                <div class="form-group">
+                  <textarea name="textarea" id="" placeholder="more info" cols="30" [formControl]="textarea"
+                    rows="10"></textarea>
+                  <small class="text-danger" *ngIf="textarea.touched && textarea.status == 'INVALID'"> ამ ველში უნდა
+                    იყოს არაუმეტესი 100 სიმბოლოსი</small>
+                </div>
+                <!-- textarea end -->
+                <!-- button -->
+
+                <label for="remember-me" class="text-info"><span>Remember me</span><input id="remember-me"
+                    name="remember-me" type="checkbox"></label>
+                <br>
+                <input type="submit" type="button"
+                  [disabled]=" username.invalid || email.invalid || password.invalid || textarea.invalid" name="submit"
+                  class="btn sub btn-info btn-md" (click)="send()" value="submit">
+
+                 
+
+
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
-  <section class="moda modal-backdrop"  [ngStyle]="{'display':hideShow}" >
-    <div id="login  ">
-      <h3 class="text-center text-white pt-5">Login form</h3>
-      <div class="container">
-          <div id="login-row" class="row justify-content-center align-items-center">
-              <div id="login-column" class="col-md-6">
-                  <div id="login-box" class="col-md-12">
-                      <form id="login-form" class="form" action="" method="post">
-                          <h3 class="text-center text-info">Login</h3>
-                          <button type="button" id="close" (click)="togle()" class="btn d-block mx-auto bg-warning text-danger">x</button>
-                          <div class="form-group">
-                              <label for="username" class="text-info">Username:</label><br>
-                              <input type="text" name="username" id="username" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label for="password" class="text-info">Password:</label><br>
-                              <input type="text" name="password" id="password" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                              <input type="button" name="submit" class="btn btn-info btn-md" value="submit">
-                          </div>
-                          <div id="register-link" class="text-right">
-                              <a href="#" class="text-info">Register here</a>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
   </div>
-  
-  </section>
  
+</section>
+<div class="col-lg-4 mx-auto">
+ 
+ 
+</div>
 
+<app-product [mydec]="hideShoww" (items)="mines($event)"></app-product>

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, OnInit ,  Output, EventEmitter , Input } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -8,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductComponent implements OnInit {
 
 
-
+ @Input() mydec ='';
+ @Output() items = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.mydec);
+
+    this.items.emit('test')
+    
   }
 prod:any = [
   {
@@ -35,7 +40,7 @@ prod:any = [
   price : 2000,
   kg : [1.760],
   sale : null,
-  gift : true,
+  gift : false,
   avatar :[
 'assets/samsung.jfif',
 'assets/galaxy.png',
@@ -43,13 +48,13 @@ prod:any = [
 
   ],
   poster:1,
-  disc:40,
+  disc:30,
 },
 {
   title : 'pixel',
   price : 1000,
   kg : [1.700],
-  sale : '',
+  sale : null,
   gift : false,
   avatar :[
 'assets/pixel.png',
@@ -70,6 +75,16 @@ DisPrice(price:any, disc:any){
   return (price / 100) * disc;
 }
 
+FormReg = new FormGroup({
+  firstName: new FormControl(''),
+  Email: new FormControl(''),
+  body: new FormControl(''),
+  product:new FormControl('')
+  
+})
 
+getDate() {
+  console.log(this.FormReg.value);
+}
 }
 

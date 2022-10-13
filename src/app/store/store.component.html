@@ -1,0 +1,24 @@
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mx-auto" *ngFor="let prod of product">
+        <div class="card">
+    <img src="{{prod.poster}}" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{prod.title}}</h5>
+      <p class="card-text">{{prod.active}}</p>
+      <p class="card-text">{{prod.id}}</p>
+    
+    </div>
+  
+    <div class="card-body">
+      <a [routerLink]  = "'/Products/'+prod.id" class="card-link">სრულად ნახვა</a>
+     
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+
